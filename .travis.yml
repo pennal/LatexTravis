@@ -1,0 +1,16 @@
+sudo: required
+dist: trusty
+before_install:
+- sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends texlive-fonts-recommended
+  texlive-latex-extra texlive-fonts-extra dvipng texlive-latex-recommended
+script:
+- mkdir _build
+- pdflatex -interaction=nonstopmode -halt-on-error -output-directory _build tex/your_file_1.tex
+- pdflatex -interaction=nonstopmode -halt-on-error -output-directory _build tex/your_file_2.tex
+deploy:
+  provider: releases
+  api_key:
+    secure: ntD9oQzrd4oxnVFHqgQSkqYuCgnwXvQafCe3cz/Qm3z7aNnKLIOsKOPGarmvLollPMQD8YWsireeD87dTrNB6887ktrxHxuBBF8+6prueP/789d8+PRfAiQdA9GN5HX5n8JUXcn79z1VEOLgqb7JIGtXN6KKarN2xwFLNlK5mOS/nFZCdbRSHUx5hY/mDpn62at6hTNKaVzQ6h91S/MGG4H9koIKjYMkIbrkfW7/w7oQO85b/M5KA695wYhnkibXigtyosxNHdxXybZL99FcM/NnFLe1NG2m28geUuaAqCgo7AVThvA6LegItkvzUis1zonReKubmNytgHogME+/2VOo7EDrw37AXyH+Y2nRuzQ+d6XjCl+53Y9jai3lAj+KZWvG0sjVJBC+wCMazBYrPuJaQNU+mPmi2aaHwpR+gMR1LVN0FGSVBJTv428ruKwOK+Bx2teTXPajzRa+i5/3qYJxuTUGrXcxWzUzJAoFUflLXwIoJGysbPhEk9qfNSmHsGlG86oyVv88kI4IiT8VXEEcqBSvW+LuTKlxheT9kzFA/b+Vy8oqoUq5xMgEi5w7mEdww4OH3pIqxSIzXlepRYlvK5eRN63dzqM9pSyUtc8Qx+T0jwBP8MZqajO4FrFjtIiuoh1Uju+N/kOAZ0BeWvMUMVZoAjPE2ydvuF8pNFU=
+  file: main.pdf
+  on:
+    repo: pennal/LatexTravis
