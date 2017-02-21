@@ -2,4 +2,7 @@ build:
   type: command
   file: main.tex
 post:
+  deploy: 
+    type: script
+    file: deploy.sh
   clean: true
