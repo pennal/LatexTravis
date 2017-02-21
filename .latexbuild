@@ -1,3 +1,5 @@
 build:
   type: command
   file: main.tex
+post:
+  clean: true
